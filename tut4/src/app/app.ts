@@ -1,9 +1,10 @@
 import { Component, computed, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SignalInput } from './signal-input/signal-input';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SignalInput],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

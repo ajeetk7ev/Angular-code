@@ -1,0 +1,2 @@
+<p>Name is : {{name()}}</p>
+<input type="text" [name]="name" [value]="name()"  (input)="changeName($event.target.value)">
