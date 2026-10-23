@@ -1,1 +1,71 @@
-<p>angular-loops works!</p>
+<div class="task-board">
+      <h2>My Daily Tasks</h2>
+
+      <ul>
+        <!-- Looping through the tasks array -->
+        <!-- 'track task.id' tells Angular how to efficiently update the list -->
+        <!-- 'let i = $index' creates a variable 'i' for the current loop number -->
+        
+        @for (task of tasks; track task.id; let i = $index) {
+          
+          <li>
+            <strong>{{ i + 1 }}.</strong> {{ task.name }}
+          </li>
+
+        } @empty {
+          
+          <!-- This renders automatically if the tasks array is completely empty -->
+          <li class="empty-state">
+            All caught up! Time to relax. 🏖️
+          </li>
+
+        }
+      </ul>
+
+      @if (tasks.length) {
+        <button (click)="clearTasks()">Clear All Tasks</button>
+      }
+    </div>
+
+
+
+    <div class="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-100 rounded-xl shadow-md">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Dashboard Access</h2>
+      
+      <!-- The @switch block evaluates the value of the userRole signal -->
+      @switch (userRole()) {
+        
+        @case ('admin') {
+          <div class="p-4 bg-red-50 text-red-700 border border-red-200 rounded-lg">
+            <span class="font-bold">👑 Admin:</span> You have full control over the system.
+          </div>
+        }
+        
+        @case ('editor') {
+          <div class="p-4 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg">
+            <span class="font-bold">📝 Editor:</span> You can create and publish content.
+          </div>
+        }
+        
+        @case ('viewer') {
+          <div class="p-4 bg-gray-50 text-gray-700 border border-gray-200 rounded-lg">
+            <span class="font-bold">👀 Viewer:</span> You have read-only access.
+          </div>
+        }
+        
+        @default {
+          <!-- The @default block renders if none of the cases match -->
+          <div class="p-4 bg-yellow-50 text-yellow-700 border border-yellow-200 rounded-lg">
+            <span class="font-bold">❓ Unknown Role:</span> Please contact support.
+          </div>
+        }
+        
+      }
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <button (click)="setRole('admin')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-sm font-medium rounded-md transition-colors">Test Admin</button>
+        <button (click)="setRole('editor')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-sm font-medium rounded-md transition-colors">Test Editor</button>
+        <button (click)="setRole('viewer')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-sm font-medium rounded-md transition-colors">Test Viewer</button>
+        <button (click)="setRole('alien')" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-sm font-medium rounded-md transition-colors">Test Unknown</button>
+      </div>
+    </div>

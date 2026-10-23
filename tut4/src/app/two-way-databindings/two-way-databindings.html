@@ -1,0 +1,22 @@
+
+<div class="p-6">
+      <h2>Edit Profile</h2>
+      
+      <!-- 3. USE [(ngModel)] -->
+      <!-- Typing in this input automatically updates the 'username' signal -->
+      <input 
+        type="text" 
+        [(ngModel)]="username" 
+        class="border p-2 rounded"
+        placeholder="Enter your name"
+      >
+
+      <!-- The UI instantly reflects the updated value -->
+      <p class="mt-4">
+        Your name is: <strong>{{ username() }}</strong>
+      </p>
+
+      <button (click)="resetName()" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded">
+        Reset to Default
+      </button>
+</div>
