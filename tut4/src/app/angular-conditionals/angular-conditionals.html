@@ -1,0 +1,32 @@
+<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md border border-gray-100">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+    Control Flow Statement in Angular
+  </h1>
+
+  <div class="flex flex-row items-center justify-between p-5 bg-gray-50 rounded-lg border border-gray-200">
+    @if (isLoading()) {
+        <span>Loading </span>
+    }
+    @else if (isLoggedin()) {
+      <span class="text-lg font-semibold text-green-700">
+        Welcome Ajeet 👋
+      </span>
+      <button 
+        (click)="toggleLogin()" 
+        class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg shadow-sm transition-colors duration-200"
+      >
+        Logout
+      </button>
+    } @else {
+      <span class="text-lg font-medium text-gray-600">
+        Please Login
+      </span>
+      <button 
+        (click)="toggleLogin()" 
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-sm transition-colors duration-200"
+      >
+        Login
+      </button>
+    }
+  </div>
+</div>

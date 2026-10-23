@@ -1,10 +1,12 @@
 import { Component, computed, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignalInput } from './signal-input/signal-input';
+import { AngularConditionals } from './angular-conditionals/angular-conditionals';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SignalInput],
+  imports: [RouterOutlet, SignalInput, AngularConditionals],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
