@@ -1,0 +1,87 @@
+
+<div class="min-h-screen bg-slate-950 p-6 md:p-10 text-white">
+
+  <!-- Page Header -->
+  <div class="max-w-6xl mx-auto mb-10">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight">
+      Student Dashboard
+    </h1>
+    <p class="text-slate-400 mt-2">
+      Manage students and view their information.
+    </p>
+  </div>
+
+  <!-- Student List -->
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-xl font-semibold mb-5">
+      All Students
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      @for (student of students(); track $index) {
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-2
+                    hover:border-indigo-500/60 hover:shadow-lg
+                    hover:shadow-indigo-500/5 transition-all duration-300">
+
+          <app-child
+            [student]="student"
+            (studentSelected)="onStudentSelected(student)"
+          />
+
+        </div>
+      }
+
+    </div>
+  </div>
+
+  <!-- Selected Student -->
+  <div class="max-w-6xl mx-auto mt-12">
+    <div class="bg-slate-900 border border-indigo-500/30 rounded-2xl p-6 md:p-8">
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 flex items-center justify-center
+                    bg-indigo-500/15 text-indigo-400 rounded-xl">
+          <span class="text-xl">✓</span>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold">Selected Student</h2>
+          <p class="text-sm text-slate-400">
+            Details of your selected student
+          </p>
+        </div>
+      </div>
+
+      @if (selectedStudent(); as student) {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          <div class="bg-slate-800/70 rounded-xl p-4">
+            <p class="text-sm text-slate-400 mb-2">Student Name</p>
+            <p class="text-lg font-semibold">{{ student.name }}</p>
+          </div>
+
+          <div class="bg-slate-800/70 rounded-xl p-4">
+            <p class="text-sm text-slate-400 mb-2">Email Address</p>
+            <p class="font-medium break-all">{{ student.email }}</p>
+          </div>
+
+          <div class="bg-slate-800/70 rounded-xl p-4">
+            <p class="text-sm text-slate-400 mb-2">Age</p>
+            <p class="text-lg font-semibold">{{ student.age }} years</p>
+          </div>
+
+        </div>
+      } @else {
+        <div class="text-center py-10">
+          <p class="text-slate-400 text-lg">No student selected yet.</p>
+          <p class="text-slate-500 text-sm mt-2">
+            Select a student from the cards above to view their details.
+          </p>
+        </div>
+      }
+
+    </div>
+  </div>
+
+</div>
